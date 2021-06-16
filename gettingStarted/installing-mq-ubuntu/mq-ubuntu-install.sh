@@ -138,7 +138,7 @@ else
 fi
 
 # Create and start a queue manager
-crtmqm QM1
+crtmqm OMQueueManager
 returnCode=$?
 if [ $returnCode -eq 0 ]
 then
@@ -147,7 +147,7 @@ else
     echo "Problem when creating a queue manager. See return code: " $returnCode
     exit $returnCode
 fi
-strmqm QM1
+strmqm OMQueueManager
 returnCode=$?
 if [ $returnCode -eq 0 ]
 then
@@ -170,7 +170,7 @@ else
 fi
 
 # Set up MQ environment from .mqsc script
-runmqsc QM1 < mq-dev-config.mqsc
+runmqsc OMQueueManager < mq-dev-config.mqsc
 returnCode=$?
 if [ $returnCode -eq 20 ]
 then
@@ -182,14 +182,14 @@ else
 fi
 
 # Set up authentication for members of the "mqclient" group
-setmqaut -m QM1 -t qmgr -g mqclient +connect +inq
+setmqaut -m OMQueueManager -t qmgr -g mqclient +connect +inq
 returnCode=$?
 if [ $returnCode -ne 0 ]
 then
     echo "Authorisation failed. See return code: " $returnCode
     exit $returnCode
 fi
-setmqaut -m QM1 -n DEV.** -t queue -g mqclient +put +get +browse +inq
+setmqaut -m OMQueueManager -n DEV.** -t queue -g mqclient +put +get +browse +inq
 returnCode=$?
 if [ $returnCode -eq 0 ]
 then
