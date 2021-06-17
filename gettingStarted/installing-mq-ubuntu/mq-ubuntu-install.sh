@@ -159,7 +159,7 @@ fi
 
 # Download and run developer config file to create MQ objects
 cd ~/Downloads
-wget https://raw.githubusercontent.com/ibm-messaging/mq-dev-samples/master/gettingStarted/mqsc/mq-dev-config.mqsc 
+wget https://github.com/KotipalliMadhavi92/mq-dev-samples/blob/master/gettingStarted/installing-mq-ubuntu/mq-dev-config.mqsc 
 returnCode=$?
 if [ $returnCode -eq 0 ]
 then
